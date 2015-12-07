@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    
 
     <!--
-      1. Make a box in the middle. a DOM skeleton, 
+      1. Make a box in the middle. a DOM skeleton,√
+
       2. create a div a later user .html(‘’) on it, so you created to interface on the page as well. 
 
       3. Make a button to produce 1 random message from the user
@@ -21,12 +22,10 @@
 
       6. Make a filter, that targets the user and brings up that user on the screen and their tweets
   -->
-    <script src="jquery.js">
-    //Write jquery in here
+    <!--Links to the jquery.js file -->
+    <script src="jquery.js"></script>
 
-    </script>
-
-
+   <!--Links to the jquery.js file -->
     <script src="data_generator.js"></script>
     <style>
 
@@ -70,11 +69,23 @@
   <body>
     <script>
 
+    //---------------- JQUERY!! -------------------------
+
       $(document).ready(function(){
         var $body = $('body');
 
+
+        $("#tweet-button").on('click',  function(){
+          var index = streams.home.length - 1;
+          for(var i=0; i<index; i++){
+                  $("#tweets").text(streams.home[i].message);
+          }
+    
+        })
+
         //$body.html('');
 
+        /*
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
@@ -83,6 +94,7 @@
           $tweet.appendTo($body);
           index -= 1;
         }
+        */
 
       });
 
@@ -105,7 +117,8 @@
        </div>
 
        <div id="tweet-zone">
-        The TWEET zone
+
+        <p id="tweets">The TWEET zone</p>
        </div>
     </div>
 
