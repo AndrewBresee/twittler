@@ -75,17 +75,29 @@
         var $body = $('body');
 
 
+        //This is not perfect because "No new tweets for now!" is apended every time i is larger than length
+
+        var i = 0
         $("#tweet-button").on('click',  function(){
-          var index = streams.home.length - 1;
-          for(var i=0; i<index; i++){
+          var length = streams.home.length -1
+          if(i < length){
+            i += 1
             var person = streams.home[i]
             var user = person.user;
             var time = person.created_at;
-            var userTime;
-            $("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+            var $tweet = $('<div></div>');
+            $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+            $tweet.appendTo("#tweets")
+            //$("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+          } else if(i = length){
+            var end = $('<div></div>');
+            end.text("No new tweets for now!");
+            end.appendTo("#tweets")
           }
-    
+
         })
+        //Make a button that clears old tweets when the message "No new tweets for now!" comes up. 
+        //Make another page that usernames link to that shows their history. Make a new page for each user.
 
         console.log("Stream home length:")
         console.log(streams.home.length) 
