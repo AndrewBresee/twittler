@@ -18,7 +18,9 @@
      var i = 0
       $(document).ready(function(){
         $('#shawn-tweets').on('click', function(){
-          var length = streams.home.length -1
+
+          var length = (streams.users.shawndrost.length -1)
+
           if(i < length){
             i += 1
             var current = streams.users.shawndrost[i];
