@@ -78,10 +78,19 @@
         $("#tweet-button").on('click',  function(){
           var index = streams.home.length - 1;
           for(var i=0; i<index; i++){
-                  $("#tweets").text(streams.home[i].message);
+            var person = streams.home[i]
+            var user = person.user;
+            var time = person.created_at;
+            var userTime;
+            $("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
           }
     
         })
+
+        console.log("Stream home length:")
+        console.log(streams.home.length) 
+        console.log("One example:")
+        console.log(streams.home[1].created_at)
 
         //$body.html('');
 
