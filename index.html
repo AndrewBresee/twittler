@@ -8,74 +8,46 @@
 
       2. create a div a later user .html(‘’) on it, so you created to interface on the page as well. 
 
-      3. Make a button to produce 1 random message from the user
+      3. Make a button to produce 1 random message from the user√
 
-      4. first create a function that compares the length of the tweet history when the paged loaded and the length of current, updated history and based on it append new tweets to the page. and from there you can play around with, adding functionality and visual details step by step
+      4. Create a function that compares the length of the tweet history when the paged loaded and the length of current, updated history and based on it append new tweets to the page. and from there you can play around with, adding functionality and visual details step by step
 
-              $('.tweet').on('click', '.username', function() { ... });
-      
+        -Should I have it show only new tweets, or collect them all over time? 
 
-      
       5. Produce when the message was created
 
              var $timestamp = $('<span class="livestamp"></span>').attr('data-livestamp', Math.floor(twittle.created_at/1000));
 
       6. Make a filter, that targets the user and brings up that user on the screen and their tweets
+        -Make CSS style sheet
+        -Link style sheet to all pages
+        -Make 4 more pages. 1 for each user
+        -Make a filter on each page to show only their tweets
+
   -->
     <!--Links to the jquery.js file -->
     <script src="jquery.js"></script>
 
    <!--Links to the jquery.js file -->
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
     <style>
-
-    #heading{
-      text-decoration: bold;
-      font-size: 25px;
-      text-align: center;
-      background-color: lightblue;
-    },
-    #tweet-button{
-      float: left;
-      padding: 1px; 
-    }
-
-    .input-area {
-    border-color: green;
-    border-width: 10px;
-    border-style: solid;
-    border-radius: 50%;
-  }
-
-  #tweet-button{
-    text-align: center;
-    text-decoration: bold;
-  }
-  #tweet-info{
-    text-align: center;
-    text-decoration: underline;
-  }
-
-  #tweet-zone{
-    width: 70%;
-    margin: 5% auto;
-    padding: 50px;
-    background-color: gray;
-    text-align: center;
-  }
-
     </style>
+
   </head>
+
   <body>
     <script>
 
-    //---------------- JQUERY!! -------------------------
+    //---------------- My JQUERY!! -------------------------
 
       $(document).ready(function(){
         var $body = $('body');
 
 
         //This is not perfect because "No new tweets for now!" is apended every time i is larger than length
+        //Make the usernames link to username pages. 
 
         var i = 0
         $("#tweet-button").on('click',  function(){
@@ -86,13 +58,31 @@
             var user = person.user;
             var time = person.created_at;
             var $tweet = $('<div></div>');
-            $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            $tweet.appendTo("#tweets")
+
+            /*
+
+            With time, I will allow the username to be clickable on the page
+            $("<p>@<a id='"+tweeter.user+"'href=#>"+tweeter.user+"</a>"+": "+tweeter.message+"</p>")
+
+            if(user === 'douglascalhoun'){
+                var user = $("<p>@ <a href=#>"+person.user+"</a>"+"</p>")
+               $tweet.text(user+ 'tweeted: ' + streams.home[i].message + ' at: ' + time);
+            } else if (user === 'sharksforcheap'){
+               $tweet.text('sharksforcheap ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+            } else if (user === 'shawndrost'){
+               $tweet.text('shawndrost '+' tweeted: ' + streams.home[i].message + ' at: ' + time);
+            } else if (user === 'mracus'){
+               $tweet.text('mracus ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+            }   
+            */
+
+            $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);       
+            $tweet.appendTo(".tweets")
             //$("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
           } else if(i = length){
             var end = $('<div></div>');
             end.text("No new tweets for now!");
-            end.appendTo("#tweets")
+            end.appendTo(".tweets")
           }
 
         })
@@ -123,23 +113,30 @@
 
     <!--HTML/Bootstrap styling below-->
 
-    <div class="container-fluid">
-      <header id="heading">
+      <header class="heading">
        <h1>The best Tweets from around the world!</h1>
      </header>
 
-     <div id="tweet-info">
-       <p>Push this button to generate tweets!</p>
+ 
+
+<nav>
+  <a href="/Users/AndrewB/Desktop/2016-01-twittler/index.html">Home</a> |
+  <a href="/Users/AndrewB/Desktop/2016-01-twittler/shawndros.html">Shawndrosts</a> |
+  <a href="/Users/AndrewB/Desktop/2016-01-twittler/sharksforcheap.html">Sharksforcheap </a> |
+  <a href="/Users/AndrewB/Desktop/2016-01-twittler/mracus.html">Mracus</a> |
+  <a href="/Users/AndrewB/Desktop/2016-01-twittler/douglascalhoun.html">Douglascalhoun</a>
+</nav>
+      
+  
+
+     <div class="tweet-info">
+       <p>Push this button to generate Tweets!</p>
+         <button id= "tweet-button" type="submit">TWEET</button>
      </div>
 
 
-       <div id="tweet-button">
-         <button id="tweet-button" type="submit">TWEET</button>
-       </div>
-
        <div id="tweet-zone">
-
-        <p id="tweets">The TWEET zone</p>
+        <p class="tweets">The TWEET zone</p>
        </div>
     </div>
 
