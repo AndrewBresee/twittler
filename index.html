@@ -24,7 +24,8 @@
         -Make 4 more pages. 1 for each user
         -Make a filter on each page to show only their tweets
 
-  -->
+    -->
+
     <!--Links to the jquery.js file -->
     <script src="jquery.js"></script>
 
@@ -77,12 +78,12 @@
             */
 
             $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);       
-            $tweet.appendTo(".tweets")
+            $tweet.appendTo("#tweet-zone")
             //$("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
           } else if(i = length){
             var end = $('<div></div>');
             end.text("No new tweets for now!");
-            end.appendTo(".tweets")
+            end.appendTo("#tweet-zone")
           }
 
         })
@@ -130,8 +131,7 @@
   
 
      <div class="tweet-info">
-       <p>Push this button to generate Tweets!</p>
-         <button id= "tweet-button" type="submit">TWEET</button>
+         <button id= "tweet-button" type="submit">MAKE TWEETS HAPPEN</button>
      </div>
 
 

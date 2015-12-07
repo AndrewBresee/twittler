@@ -31,11 +31,11 @@
             var $tweet = $('<div></div>');
 
             $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
-            $tweet.appendTo(".tweets")
+            $tweet.appendTo("#tweet-zone")
           } else if(i = length){
             var end = $('<div></div>');
             end.text("No new tweets for now!");
-            end.appendTo(".tweets")
+            end.appendTo("#tweet-zone")
           }
         })
       }); 
@@ -65,7 +65,7 @@
 
 
     <div class="tweet-info">
-         <button id="shawn-tweets" type="submit"></button>
+         <button id="shawn-tweets" type="submit">MAKE THEM TWEET!</button>
      </div>
 
        <div id="tweet-zone">

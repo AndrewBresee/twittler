@@ -103,6 +103,7 @@ var
 			jQuery.ready();
 		}
 	},
+
 	// Clean-up method for dom ready events
 	detach = function() {
 		if ( document.addEventListener ) {
@@ -114,6 +115,7 @@ var
 			window.detachEvent( "onload", completed );
 		}
 	};
+
 
 jQuery.fn = jQuery.prototype = {
 	// The current version of jQuery being used
@@ -392,8 +394,10 @@ jQuery.extend({
 		return jQuery;
 	},
 
+
 	// Is the DOM ready to be used? Set to true once it occurs.
 	isReady: false,
+
 
 	// A counter to track how many items to wait for before
 	// the ready event fires. See #6781
@@ -979,6 +983,7 @@ function createOptions( options ) {
 	return object;
 }
 
+
 /*
  * Create a callback list using the following parameters:
  *
@@ -1001,6 +1006,7 @@ function createOptions( options ) {
  *	stopOnFalse:	interrupt callings when a callback returns false
  *
  */
+
 jQuery.Callbacks = function( options ) {
 
 	// Convert options from String-formatted to Object-formatted if needed
@@ -7121,7 +7127,7 @@ function css_defaultDisplay( nodeName ) {
 
 			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = ( iframe[0].contentWindow || iframe[0].contentDocument ).document;
-			doc.write("<!doctype html><html><body>");
+			doc.write("<!doctype html><html> 	");
 			doc.close();
 
 			display = actualDisplay( nodeName, doc );
