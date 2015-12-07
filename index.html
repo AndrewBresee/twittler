@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <!--
+      1. Make a box in the middle. a DOM skeleton, 
+      2. create a div a later user .html(‘’) on it, so you created to interface on the page as well. 
+
+      3. Make a button to produce 1 random message from the user
+
+      4. first create a function that compares the length of the tweet history when the paged loaded and the length of current, updated history and based on it append new tweets to the page. and from there you can play around with, adding functionality and visual details step by step
+
+              $('.tweet').on('click', '.username', function() { ... });
+      
+
+      
+      5. Produce when the message was created
+
+             var $timestamp = $('<span class="livestamp"></span>').attr('data-livestamp', Math.floor(twittle.created_at/1000));
+
+      6. Make a filter, that targets the user and brings up that user on the screen and their tweets
+  -->
+    <script src="jquery.js">
+    //Write jquery in here
+
+    </script>
+
+
     <script src="data_generator.js"></script>
+    <style>
+
+    #heading{
+      text-decoration: bold;
+      font-size: 25px;
+      text-align: center;
+      background-color: lightblue;
+    },
+    #tweet-button{
+      float: left;
+      padding: 1px; 
+    }
+
+    .input-area {
+    border-color: green;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+  #tweet-button{
+    text-align: center;
+    text-decoration: bold;
+  }
+  #tweet-info{
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  #tweet-zone{
+    width: 70%;
+    margin: 5% auto;
+    padding: 50px;
+    background-color: gray;
+    text-align: center;
+  }
+
+    </style>
   </head>
   <body>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
+
+        //$body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
@@ -23,5 +87,29 @@
       });
 
     </script>
+
+    <!--HTML/Bootstrap styling below-->
+
+    <div class="container-fluid">
+      <header id="heading">
+       <h1>The best Tweets from around the world!</h1>
+     </header>
+
+     <div id="tweet-info">
+       <p>Push this button to generate tweets!</p>
+     </div>
+
+
+       <div id="tweet-button">
+         <button id="tweet-button" type="submit">TWEET</button>
+       </div>
+
+       <div id="tweet-zone">
+        The TWEET zone
+       </div>
+    </div>
+
+
+
   </body>
 </html>
