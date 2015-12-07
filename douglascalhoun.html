@@ -11,57 +11,44 @@
     <style>
     </style>
     
-    <title>Douglascalhoun Tweets</title>
 
+
+      <title>Douglascalhoun Tweets</title>
+  <header class="heading">
+
+      <img class="profile-pic" src="https://pbs.twimg.com/profile_images/1831644430/DSC02750.JPG">
+       <h1>Douglascalhoun Tweets!</h1>
   </head>
 
-      <header class="heading">
-       <h1>Douglascalhoun Tweets!</h1>
+  <body>
 
+     <script>
 
-      <script>
+     var i = 0
       $(document).ready(function(){
-        var $body = $('body');
+        $('#doug-tweets').on('click', function(){
 
+          var length = (streams.users.douglascalhoun.length -1 )
+          console.log(length)
 
-        //This is not perfect because "No new tweets for now!" is apended every time i is larger than length
-        //Make the usernames link to username pages. 
-
-        var i = 0
-        $("#Doug-Button").on('click',  function(){
-          var length = streams.home.length -1
           if(i < length){
             i += 1
-            var person = streams.home[i]
-            var user = person.user;
-            var time = person.created_at;
+            var current = streams.users.douglascalhoun[i];
+            var message = current.message;
+            console.log(streams.users.douglascalhoun[i])
+            var user = "Douglascalhoun"
+            var time = current.created_at;
             var $tweet = $('<div></div>');
 
-            /*
-
-            With time, I will allow the username to be clickable on the page
-            $("<p>@<a id='"+tweeter.user+"'href=#>"+tweeter.user+"</a>"+": "+tweeter.message+"</p>")
-
-            if(user === 'douglascalhoun'){
-                var user = $("<p>@ <a href=#>"+person.user+"</a>"+"</p>")
-               $tweet.text(user+ 'tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'sharksforcheap'){
-               $tweet.text('sharksforcheap ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'shawndrost'){
-               $tweet.text('shawndrost '+' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'mracus'){
-               $tweet.text('mracus ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            }   
-            */
-
-            $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);       
-            $tweet.appendTo("#tweets")
-            //$("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-          } else if(i = length){
+            $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
+            $tweet.appendTo(".tweets")
+          } else if (i = length){
             var end = $('<div></div>');
             end.text("No new tweets for now!");
-            end.appendTo("#tweets")
+            end.appendTo(".tweets")
           }
+        })
+      });
     </script>
 
      </header>
@@ -75,23 +62,14 @@
   <a href="/Users/AndrewB/Desktop/2016-01-twittler/douglascalhoun.html">Douglascalhoun</a>
 </nav>
 
-  <body>
 
-<div class="tweet-info">
-       <p>See Douglascalhoun's Tweets!</p>
+      <div class="tweet-info">
+         <button id="doug-tweets" type="submit">MAKE THEM TWEET!</button>
      </div>
 
-
-       <div class="T-Button">
-         <button id="tweet-button" type="submit">TWEET</button>
+        <div id="tweet-zone">
+        <p class="tweets">The TWEET zone</p>
        </div>
-
-       <div id="tweet-zone">
-
-        <p id="tweets">The TWEET zone</p>
-       </div>
-    </div>
-
 
   </body>
 </html>
