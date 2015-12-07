@@ -1,10 +1,16 @@
 
+
+.profile-pic{
+   height: 25%; 
+   width: 25%;
+}
     .heading{
       text-decoration: bold;
-      font-size: 25px;
+      font-size: 125%;
       text-align: center;
       background-color: lightblue;
-    },
+    }
+
 
   .tweet-button {
     display: block; /* change this from inline-block */
@@ -49,6 +55,7 @@
     border-style: solid;
     text-align: center;
   }
+
   nav{
     text-align: center;
   }
