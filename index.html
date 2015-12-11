@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
 
     <!--
       1. Make a box in the middle. a DOM skeleton,√
@@ -40,105 +39,168 @@
 
   <body>
     <script>
+    $(document).ready(function(){
+      $("#id").addClass('world-pic');
 
-    //---------------- My JQUERY!! -------------------------
+      var length = streams.home.length -1
+      var i = 0; 
+      while(i < length){
+        var person = streams.home[i]
+        var user = person.user;
+        var time = person.created_at;
+        var $tweet = $('<div></div>');
+        $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
+        $tweet.appendTo("#tweets");
+        i += 1;
+      }
 
-      $(document).ready(function(){
-        var $body = $('body');
 
 
-        //This is not perfect because "No new tweets for now!" is apended every time i is larger than length
-        //Make the usernames link to username pages. 
 
-        var i = 0
-        $("#tweet-button").on('click',  function(){
-          var length = streams.home.length -1
-          if(i < length){
-            i += 1
-            var person = streams.home[i]
-            var user = person.user;
-            var time = person.created_at;
-            var $tweet = $('<div></div>');
+      $('#shark').on('click', function(){
+        $("#tweets").text('');
+        $("#id").removeClass();
+        $('#main').css({'background-color':'red'});
+        $("#id").addClass('shark-pic');
+        $('.title').text('Shark Tweets'); 
+  
+        var length = (streams.users.sharksforcheap .length -1)
 
-            /*
-
-            With time, I will allow the username to be clickable on the page
-            $("<p>@<a id='"+tweeter.user+"'href=#>"+tweeter.user+"</a>"+": "+tweeter.message+"</p>")
-
-            if(user === 'douglascalhoun'){
-                var user = $("<p>@ <a href=#>"+person.user+"</a>"+"</p>")
-               $tweet.text(user+ 'tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'sharksforcheap'){
-               $tweet.text('sharksforcheap ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'shawndrost'){
-               $tweet.text('shawndrost '+' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            } else if (user === 'mracus'){
-               $tweet.text('mracus ' +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-            }   
-            */
-
-            $tweet.text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);       
-            $tweet.appendTo("#tweet-zone")
-            //$("#tweets").text(user +' tweeted: ' + streams.home[i].message + ' at: ' + time);
-          } else if(i = length){
-            var end = $('<div></div>');
-            end.text("No new tweets for now!");
-            end.appendTo("#tweet-zone")
-          }
-
-        })
-        //Make a button that clears old tweets when the message "No new tweets for now!" comes up. 
-        //Make another page that usernames link to that shows their history. Make a new page for each user.
-
-        console.log("Stream home length:")
-        console.log(streams.home.length) 
-        console.log("One example:")
-        console.log(streams.home[1].created_at)
-
-        //$body.html('');
-
-        /*
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
+        var n = 0; 
+        while(n < length){
+          var current = streams.users.sharksforcheap[n];
+          var message = current.message;
+          console.log(streams.users.sharksforcheap[n])
+          var user = "Sharksforcheap "
+          var time = current.created_at;
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+          $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
+          $tweet.appendTo("#tweets")
+          n += 1
         }
-        */
 
       });
 
+       $('#shawn').on('click', function(){
+        $("#tweets").text('');
+        $("#id").removeClass();
+        $('#main').css({'background-color':'green'});
+        $("#id").addClass('shawn-pic');
+        $('.title').text('Shawn Tweets'); 
+
+        var n = 0; 
+        while(n < length){
+          var current = streams.users.shawndrost[n];
+          console.log(current)
+          var message = current.message;
+          var user = "Shawndrost"
+          var time = current.created_at;
+          var $tweet = $('<div></div>');
+          $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
+          $tweet.appendTo("#tweets")
+          n += 1
+        }
+
+      });
+
+
+       $('#global').on('click', function(){
+        $("#tweets").text('');
+        $("#id").removeClass();
+        $('#main').css({'background-color':'white'});
+        $("#id").addClass('world-pic');
+        $('.title').text('The World Tweets'); 
+
+        var length = streams.home.length -1; 
+        var n = 0; 
+        while(n < length){
+          var person = streams.home[n]
+          var user = person.user;
+          var time = person.created_at;
+          var $tweet = $('<div></div>');
+          $tweet.text(user +' tweeted: ' + streams.home[n].message + ' at: ' + time);
+          $tweet.appendTo("#tweets");
+          n += 1;
+        }
+      });
+
+
+       $('#darrcus').on('click', function(){
+        $("#tweets").text('');
+        $("#id").removeClass();
+        $('#main').css({'background-color':'blue'});
+        $("#id").addClass('mracus-pic');
+        $('.title').text('Mracus Tweets'); 
+
+        var n = 0;
+
+        var length = (streams.users.mracus.length -1 );
+        while(n < length){
+          var current = streams.users.mracus[n];
+          var message = current.message;
+          console.log(streams.users.mracus[n])
+          var user = "Mracus"
+          var time = current.created_at;
+          var $tweet = $('<div></div>');
+          $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
+          $tweet.appendTo("#tweets");
+          n += 1
+        };
+      }); 
+
+
+       $('#doug').on('click', function(){
+        $("#tweets").text('');
+        $("#id").removeClass();
+        $('#main').css({'background-color':'orange'});
+        $("#id").addClass('doug-pic');
+         $('.title').text('Doug Tweets'); 
+
+          var length = (streams.users.douglascalhoun.length -1 )
+          console.log(length);
+
+          var n = 0
+          while(n < length){
+            var current = streams.users.douglascalhoun[n];
+            var message = current.message;
+            console.log(streams.users.douglascalhoun[n])
+            var user = "Douglascalhoun"
+            var time = current.created_at;
+            var $tweet = $('<div></div>');
+
+            $tweet.text(user +' tweeted: ' + message + ' at: ' + time);       
+            $tweet.appendTo("#tweets")
+            n += 1;
+          }
+      });
+
+
+
+    })
     </script>
 
-    <!--HTML/Bootstrap styling below-->
+    <header><h1 class="header">Tweets From Around The World!</h1></header>
 
-      <header class="heading">
-       <h1>The best Tweets from around the world!</h1>
-     </header>
-
- 
-
-<nav>
-  <a href="index.html">Home</a> |
-  <a href="/Users/AndrewB/Desktop/Coding/Precoursework/2016-01-twittler/shawndros.html">Shawndrosts</a> |
-  <a href="/Users/AndrewB/Desktop/Coding/Precoursework/2016-01-twittler/sharksforcheap.html">Sharksforcheap </a> |
-  <a href="/Users/AndrewB/Desktop/Coding/Precoursework/2016-01-twittler/mracus.html">Mracus</a> |
-  <a href="/Users/AndrewB/Desktop/2016-01-twittler/douglascalhoun.html">Douglascalhoun</a>
-</nav>
-      
-  
-
-     <div class="tweet-info">
-         <button id= "tweet-button" type="submit">MAKE TWEETS HAPPEN</button>
-     </div>
-
-
-       <div id="tweet-zone">
-        <p class="tweets">The TWEET zone</p>
-       </div>
+    <div class="nav">
+      <span id="shark">Shark</span>
+      <span id="shawn">Shawn</span>
+      <span id="global">Global Tweets</span>
+      <span id="darrcus">Marrcus</span>
+      <span id="doug">Doug</span>
     </div>
+
+
+
+    <div id="main">
+      <h2 class="title">The World Tweets</h2>
+      <ul>
+        <li id="id"> 
+        </li>
+
+        <li id="tweets"> 
+          <h3>The Tweet Zone<h3>
+         </li>  
+      </ul>
 
 
 
